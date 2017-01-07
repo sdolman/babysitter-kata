@@ -8,11 +8,15 @@ public class BabysitterKata {
 
 	public BabysitterKata(int startTime, int endTime) {
 		this.startTime = startTime;
+		if(endTime % 100 != 0) {
+			endTime = endTime + 100 - (endTime % 100);
+		}
 		this.endTime = endTime;
 	}
 
 	public int getAmountDue() {
 		amountDue = (endTime - startTime)/100*12;
+		
 		return amountDue;
 	}
 
