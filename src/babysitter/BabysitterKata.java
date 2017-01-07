@@ -20,7 +20,16 @@ public class BabysitterKata {
 	}
 
 	public int getAmountDue() {
-		amountDue = (endTime - startTime)/100*12;
+		if (endTime <= bedtime) {
+		amountDue += (endTime - startTime)/100*12;
+		}
+		if (endTime > bedtime && startTime >= bedtime) {
+			amountDue = (endTime - startTime)/100*8;
+		}
+		if (endTime > bedtime && startTime < bedtime) {
+			amountDue += (bedtime - startTime)/100*12;
+			amountDue += (endTime - bedtime)/100*8;
+		}
 		
 		return amountDue;
 	}
