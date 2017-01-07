@@ -14,5 +14,11 @@ public class BabysitterKataTest {
 		assertEquals(12, underTest.getAmountDue());
 	}
 	
+	@Test
+	public void whenWorking2HoursBeforeBedtimeThenPay24 () {
+		underTest = new BabysitterKata(1700, 1900);
+		assertEquals(24, underTest.getAmountDue());
+	}
+	
 
 }
