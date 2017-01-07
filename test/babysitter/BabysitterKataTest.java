@@ -10,28 +10,32 @@ public class BabysitterKataTest {
 	
 	@Test
 	public void whenWorking5PmTo6PmThenPay12() {
-		underTest = new BabysitterKata(1700, 1800);
+		underTest = new BabysitterKata(1700, 1800, 2000);
 		assertEquals(12, underTest.getAmountDue());
 	}
 	
 	@Test
 	public void whenWorking2HoursBeforeBedtimeThenPay24 () {
-		underTest = new BabysitterKata(1700, 1900);
+		underTest = new BabysitterKata(1700, 1900, 2000);
 		assertEquals(24, underTest.getAmountDue());
 	}
 	
 	@Test
 	public void whenWorking2AndFractionHoursPostEndThenPay36 () {
-		underTest = new BabysitterKata(1700, 1915);
+		underTest = new BabysitterKata(1700, 1915, 2000);
 		assertEquals(36, underTest.getAmountDue());
 	}
 	
 	@Test
 	public void whenWorking1AndFractionHoursPostStartAndPostEndThenPay36 () {
-		underTest = new BabysitterKata(1720, 1915);
+		underTest = new BabysitterKata(1720, 1915, 2000);
 		assertEquals(36, underTest.getAmountDue());
 	}
 	
-	
+	@Test
+	public void whenWorking1HourAfterBedtimeThenPay8() {
+		underTest = new BabysitterKata(2000, 2100, 2000);
+		assertEquals(8, underTest.getAmountDue());
+	}
 
 }

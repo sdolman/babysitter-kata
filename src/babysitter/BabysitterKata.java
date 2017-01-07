@@ -5,8 +5,9 @@ public class BabysitterKata {
 	private int amountDue;
 	private int startTime;
 	private int endTime;
+	private int bedtime;
 
-	public BabysitterKata(int startTime, int endTime) {
+	public BabysitterKata(int startTime, int endTime, int bedtime) {
 		if(startTime % 100 != 0) {
 			startTime = startTime - (startTime % 100);
 		}
@@ -15,6 +16,7 @@ public class BabysitterKata {
 			endTime = endTime + 100 - (endTime % 100);
 		}
 		this.endTime = endTime;
+		this.bedtime = bedtime;
 	}
 
 	public int getAmountDue() {
