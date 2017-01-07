@@ -27,10 +27,11 @@ public class BabysitterKataTest {
 	}
 	
 	@Test
-	public void whenWorking2AndFractionHoursPostStartThenPay36 () {
+	public void whenWorking1AndFractionHoursPostStartAndPostEndThenPay36 () {
 		underTest = new BabysitterKata(1720, 1915);
 		assertEquals(36, underTest.getAmountDue());
 	}
+	
 	
 
 }
