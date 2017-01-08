@@ -12,7 +12,7 @@ public class BabysitterKata {
 	public BabysitterKata(int startTime, int endTime, int bedtime) {
 		this.startTime = topOfTheHour(startTime);
 		this.endTime = extendTimeToNextWholeHour(endTime);
-		this.bedtime = bedtime;
+		this.bedtime = extendTimeToNextWholeHour(bedtime);
 	}
 
 	private int topOfTheHour(int startTime) {

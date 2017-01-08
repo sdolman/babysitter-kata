@@ -43,5 +43,11 @@ public class BabysitterKataTest {
 		underTest = new BabysitterKata(1900, 2200, 2000);
 		assertEquals(28, underTest.calculateAmountDue());
 	}
+	
+	@Test
+	public void shouldPayFullHourOfRegularRateIfBedtimeIsNotOnTheHour() {
+		underTest = new BabysitterKata(1900, 2200, 2030);
+		assertEquals(32, underTest.calculateAmountDue());
+	}
 
 }
