@@ -10,9 +10,19 @@ public class BabysitterKata {
 	private int bedtime;
 
 	public BabysitterKata(int startTime, int endTime, int bedtime) {
+		startTime = normalizePostMidnight(startTime);
+		endTime = normalizePostMidnight(endTime);
+		bedtime = normalizePostMidnight(bedtime);
 		this.startTime = topOfTheHour(startTime);
 		this.endTime = extendTimeToNextWholeHour(endTime);
 		this.bedtime = extendTimeToNextWholeHour(bedtime);
+	}
+
+	private int normalizePostMidnight(int time) {
+		if (time <= 400) {
+			time += 2400;
+		}
+		return time;
 	}
 
 	private int topOfTheHour(int startTime) {
@@ -29,6 +39,7 @@ public class BabysitterKata {
 	public int calculateAmountDue() {
 		addAmountDuePriorToBedtime();
 		addAmountDueAfterBedtime();
+		addAmountDueAfterMidnight();
 		convertFromHundredHoursToHour();
 		return amountDue;
 	}
@@ -40,8 +51,14 @@ public class BabysitterKata {
 	}
 
 	private void addAmountDueAfterBedtime() {
-		if (endTime > bedtime) {
+		if (endTime >= bedtime) {
 			amountDue += (endTime - Math.max(startTime, bedtime)) * BEDTIME_RATE;
+		}
+	}
+
+	private void addAmountDueAfterMidnight() {
+		if (endTime >= 2400) {
+			amountDue = 1600;
 		}
 	}
 
