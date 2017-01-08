@@ -33,10 +33,6 @@ public class BabysitterKata {
 		return amountDue;
 	}
 
-	private void convertFromHundredHoursToHour() {
-		amountDue /= 100;
-	}
-
 	private void addAmountDuePriorToBedtime() {
 		if (startTime < bedtime) {
 			amountDue += (Math.min(endTime, bedtime) - startTime) * EVENING_RATE;
@@ -47,6 +43,10 @@ public class BabysitterKata {
 		if (endTime > bedtime) {
 			amountDue += (endTime - Math.max(startTime, bedtime)) * BEDTIME_RATE;
 		}
+	}
+
+	private void convertFromHundredHoursToHour() {
+		amountDue /= 100;
 	}
 
 }
