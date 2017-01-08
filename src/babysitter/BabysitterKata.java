@@ -4,6 +4,7 @@ public class BabysitterKata {
 
 	private static final int EVENING_RATE = 12;
 	private static final int BEDTIME_RATE = 8;
+	private static final int MIDNIGHT_RATE = 16;
 	private int amountDue;
 	private int startTime;
 	private int endTime;
@@ -52,13 +53,13 @@ public class BabysitterKata {
 
 	private void addAmountDueAfterBedtime() {
 		if (endTime >= bedtime) {
-			amountDue += (endTime - Math.max(startTime, bedtime)) * BEDTIME_RATE;
+			amountDue += (Math.min(endTime, 2400) - Math.max(startTime, bedtime)) * BEDTIME_RATE;
 		}
 	}
 
 	private void addAmountDueAfterMidnight() {
 		if (endTime >= 2400) {
-			amountDue = 1600;
+			amountDue += (endTime - Math.max(startTime, 2400)) * MIDNIGHT_RATE;
 		}
 	}
 
