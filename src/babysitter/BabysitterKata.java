@@ -2,6 +2,7 @@ package babysitter;
 
 public class BabysitterKata {
 
+	private static final int MORNING_LIMIT = 400;
 	private static final int MIDNIGHT = 2400;
 	private static final int EVENING_RATE = 12;
 	private static final int BEDTIME_RATE = 8;
@@ -21,7 +22,7 @@ public class BabysitterKata {
 	}
 
 	private int normalizePostMidnight(int time) {
-		if (time <= 400) {
+		if (time <= MORNING_LIMIT) {
 			time += MIDNIGHT;
 		}
 		return time;
