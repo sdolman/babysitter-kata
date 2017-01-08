@@ -2,6 +2,7 @@ package babysitter;
 
 public class BabysitterKata {
 
+	private static final int MIDNIGHT = 2400;
 	private static final int EVENING_RATE = 12;
 	private static final int BEDTIME_RATE = 8;
 	private static final int MIDNIGHT_RATE = 16;
@@ -21,7 +22,7 @@ public class BabysitterKata {
 
 	private int normalizePostMidnight(int time) {
 		if (time <= 400) {
-			time += 2400;
+			time += MIDNIGHT;
 		}
 		return time;
 	}
@@ -53,13 +54,13 @@ public class BabysitterKata {
 
 	private void addAmountDueAfterBedtime() {
 		if (endTime >= bedtime) {
-			amountDue += (Math.min(endTime, 2400) - Math.max(startTime, bedtime)) * BEDTIME_RATE;
+			amountDue += (Math.min(endTime, MIDNIGHT) - Math.max(startTime, bedtime)) * BEDTIME_RATE;
 		}
 	}
 
 	private void addAmountDueAfterMidnight() {
-		if (endTime >= 2400) {
-			amountDue += (endTime - Math.max(startTime, 2400)) * MIDNIGHT_RATE;
+		if (endTime >= MIDNIGHT) {
+			amountDue += (endTime - Math.max(startTime, MIDNIGHT)) * MIDNIGHT_RATE;
 		}
 	}
 
