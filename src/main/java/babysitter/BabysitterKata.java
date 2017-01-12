@@ -16,9 +16,17 @@ public class BabysitterKata {
 		startTime = normalizePostMidnight(startTime);
 		endTime = normalizePostMidnight(endTime);
 		bedtime = normalizePostMidnight(bedtime);
+		bedtime = bedtimeMustBeAtOrBeforeMidnight(bedtime);
 		this.startTime = topOfTheHour(startTime);
 		this.endTime = extendTimeToNextWholeHour(endTime);
 		this.bedtime = extendTimeToNextWholeHour(bedtime);
+	}
+
+	private int bedtimeMustBeAtOrBeforeMidnight(int bedtime) {
+		if (bedtime > MIDNIGHT) {
+			bedtime = MIDNIGHT;
+		}
+		return bedtime;
 	}
 
 	private int normalizePostMidnight(int time) {
